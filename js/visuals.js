@@ -1,4 +1,4 @@
-var mac_authors = JSON.parse($.ajax({type: "GET", url: "https://raw.githubusercontent.com/McMaster-Faculty-of-Eng/standardized-citations/main/json/mac_authors.json", async: false}).responseText);
+var mac_authors = JSON.parse($.ajax({type: "GET", url: "https://raw.githubusercontent.com/McMaster-Faculty-of-Engineering/standardized-citations/main/json/mac_authors.json", async: false}).responseText);
 var table1 = $('#table1').DataTable( {
   data: mac_authors,
   //"bFilter": false,
@@ -35,7 +35,7 @@ var table1 = $('#table1').DataTable( {
 });
 
 // Setup default data and data dictionary to utilize when selecting a new subject or dataset
-var ai_ = JSON.parse($.ajax({type: "GET", url: "https://raw.githubusercontent.com/McMaster-Faculty-of-Eng/standardized-citations/main/json/AI_.json", async: false}).responseText);
+var ai_ = JSON.parse($.ajax({type: "GET", url: "https://raw.githubusercontent.com/McMaster-Faculty-of-Engineering/standardized-citations/main/json/AI_.json", async: false}).responseText);
 dsets = {"ai_":"AI_","app_phys_":"APPLPHYS_","biomed_":"BIOMED_","chemicale_":"CHEMICALE_","chemicalp_":"CHEMICALP_","civil_":"CIVIL_","ece_":"ECE_","educ_":"EDUC_","energy_":"ENERGY_","enviro_":"ENVIRO_","geomatics_":"GEOMATIC_","indust_":"INDUST_","logist_":"LOGIST_","material_":"MATERIALS_","mechanical_":"MECHANICAL_","metal_":"METAL_","network_":"NETWORK_","opticselec_":"OPTOELEC_","polymer_":"POLYMERS_","softwr_":"SOFTWR_"}
 
 
@@ -94,7 +94,7 @@ var table2 = $('#table2').DataTable( {
 function changeTable(){
   var subject = document.getElementsByClassName("subDrop activeClear")[0].title;
   var newSelection = dsets[subject];
-  var link = ["https://raw.githubusercontent.com/McMaster-Faculty-of-Eng/standardized-citations/main/json/",newSelection,".json"].join('')
+  var link = ["https://raw.githubusercontent.com/McMaster-Faculty-of-Engineering/standardized-citations/main/json/",newSelection,".json"].join('')
   var table_update = JSON.parse($.ajax({type: "GET", url: link, async: false}).responseText);
   table2.clear().draw();
   table2.rows.add(table_update).draw();
@@ -423,7 +423,7 @@ heatLegend.numberFormatter.numberFormat = "#%";
 
 
 
-var ai_geo = JSON.parse($.ajax({type: "GET", url: "https://raw.githubusercontent.com/McMaster-Faculty-of-Eng/standardized-citations/main/json/AI_geo.json", async: false}).responseText);
+var ai_geo = JSON.parse($.ajax({type: "GET", url: "https://raw.githubusercontent.com/McMaster-Faculty-of-Engineering/standardized-citations/main/json/AI_geo.json", async: false}).responseText);
 geo_dsets = {"ai_":"AI_geo","app_phys_":"APPLPHYS_geo","biomed_":"BIOMED_geo","chemicale_":"CHEMICALE_geo","chemicalp_":"CHEMICALP_geo","civil_":"CIVIL_geo","ece_":"ECE_geo","educ_":"EDUC_geo","energy_":"ENERGY_geo","enviro_":"ENVIRO_geo","geomatics_":"GEOMATIC_geo","indust_":"INDUST_geo","logist_":"LOGIST_geo","material_":"MATERIALS_geo","mechanical_":"MECHANICAL_geo","metal_":"METAL_geo","network_":"NETWORK_geo","opticselec_":"OPTICSELEC_geo","polymer_":"POLYMER_geo","softwr_":"SOFTWR_geo"};
 
 countriesSeries.data = ai_geo;
@@ -479,7 +479,7 @@ function selectDataset(subject) {
 
   // Change data for bubble chart
   var selectedSubject = dsets[subject];
-  var link = ["https://raw.githubusercontent.com/McMaster-Faculty-of-Eng/standardized-citations/main/json/",selectedSubject,".json"].join('')
+  var link = ["https://raw.githubusercontent.com/McMaster-Faculty-of-Engineering/standardized-citations/main/json/",selectedSubject,".json"].join('')
   var data_update = JSON.parse($.ajax({type: "GET", url: link, async: false}).responseText);
   chart.data = data_update;
 
@@ -505,7 +505,7 @@ function selectDataset(subject) {
 
   // Change data for map
   var selectedSubject_geo = geo_dsets[subject];
-  var link = ["https://raw.githubusercontent.com/McMaster-Faculty-of-Eng/standardized-citations/main/json/",selectedSubject_geo,".json"].join('')
+  var link = ["https://raw.githubusercontent.com/McMaster-Faculty-of-Engineering/standardized-citations/main/json/",selectedSubject_geo,".json"].join('')
   var data_update = JSON.parse($.ajax({type: "GET", url: link, async: false}).responseText);
   countriesSeries.data = data_update;
   chart_map.invalidateData();
